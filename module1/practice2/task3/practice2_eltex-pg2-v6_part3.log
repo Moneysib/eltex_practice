@@ -1,0 +1,317 @@
+Script started on 2026-11-02 16:00:03+07:00 [TERM="xterm" TTY="/dev/pts/2" COLUMNS="80" LINES="24"]
+eltex-pg2-v6@eltex-2026-autumn:~$ ssh root@172.16.9.206
+Welcome to Ubuntu 24.04.2 LTS (GNU/Linux 6.8.0-147-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Mon Nov  2 09:00:17 AM UTC 2026
+
+  System load:  0.0                Processes:              112
+  Usage of /:   41.9% of 14.66GB   Users logged in:        0
+  Memory usage: 8%                 IPv4 address for ens18: 172.16.9.206
+  Swap usage:   0%
+
+ * Canonical Workshop gives developers fast, composable, reproducible, and
+   secure developer environments that are perfect for agentic workflows.
+
+   https://ubuntu.com/workshop
+
+Expanded Security Maintenance for Applications is not enabled.
+
+114 updates can be applied immediately.
+1 of these updates is a standard security update.
+To see these additional updates run: apt list --upgradable
+
+1 additional security update can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+New release '26.04.1 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+Mon Nov  2 07:09:38 AM UTC 2026
+Last login: Mon Nov  2 08:39:19 2026 from 172.16.8.4
+root@eltex-practice2-pg2-v6:~# git config --global user.name "Moneysib"
+root@eltex-practice2-pg2-v6:~# git config --global user.email "alexluzhanskiy@gmail.com"
+root@eltex-practice2-pg2-v6:~# git config --global init.defaultBranch main
+root@eltex-practice2-pg2-v6:~# apt update && apt install git gh
+git is already the newest version (1:2.43.0-1ubuntu7.4).
+git set to manually installed.
+The following NEW packages will be installed:
+  gh
+0 upgraded, 1 newly installed, 0 to remove and 94 not upgraded.
+Need to get 8,836 kB of archives.
+After this operation, 45.4 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+root@eltex-practice2-pg2-v6:~# git config --global --list
+user.name=Moneysib
+user.email=alexluzhanskiy@gmail.com
+init.defaultbranch=main
+root@eltex-practice2-pg2-v6:~# ssh-keygen -t ed25519 -f ~/.ssh/Moneysib
+Generating public/private ed25519 key pair.
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /root/.ssh/Moneysib
+Your public key has been saved in /root/.ssh/Moneysib.pub
+The key fingerprint is:
+SHA256:J37YAg5t1PHvYLK6srsIRoU+rAbMyocJG446/4ZvqUk root@eltex-practice2-pg2-v6
+The key's randomart image is:
++--[ED25519 256]--+
+|        .        |
+|  .    . o       |
+| . .  . . .      |
+|= .  o     .     |
+|+B  . + S + .    |
+|Xo+  + o O o     |
+|*BEo .. = o .    |
+|=ooo=  . o       |
+|.o=**=o.         |
++----[SHA256]-----+
+root@eltex-practice2-pg2-v6:~# gh auth login
+What account do you want to log into? [Use arrows to move, type to filter]
+> GitHub.com
+  GitHub Enterprise Server
+What is your preferred protocol for Git operations on this host? [Use arrows to move, type to filter]
+  HTTPS
+> SSH
+What is your preferred protocol for Git operations on this host?
+Upload your SSH public key to your GitHub account? [Use arrows to move, type to filter]
+> /root/.ssh/Moneysib.pub
+  Skip
+Title for your SSH key: eltex-practice2-pg2-v6
+How would you like to authenticate GitHub CLI? [Use arrows to move, type to filter]
+> Login with a web browser
+  Paste an authentication token
+
+First copy your one-time code: DFF4-7E44
+Press Enter to open github.com in your browser... 
+Failed opening a web browser at https://github.com/login/device
+  exec: "xdg-open,x-www-browser,www-browser,wslview": executable file not found in $PATH
+  Please try entering the URL in your browser manually
+Authentication complete.
+- gh config set -h github.com git_protocol ssh
+Configured git protocol
+Authentication credentials saved in plain text
+Uploaded the SSH key to your GitHub account: /root/.ssh/Moneysib.pub
+Logged in as Moneysib
+root@eltex-practice2-pg2-v6:~# gh auth setup-git --hostname github.com
+root@eltex-practice2-pg2-v6:~# gh auth status
+github.com
+  Logged in to github.com account (/root/.config/gh/hosts.yml)
+  - Active account: true
+  - Git operations protocol: ssh
+  - Token: gho_************************************
+  - Token scopes: 'admin:public_key', 'gist', 'read:org', 'repo'
+root@eltex-practice2-pg2-v6:~# gh repo create --public eltex_practice
+✓ Created repository Moneysib/eltex_practice on GitHub
+  https://github.com/Moneysib/eltex_practice
+root@eltex-practice2-pg2-v6:~# mkdir ~/eltex_ practice && cd ~/eltex_practice
+root@eltex-practice2-pg2-v6:~/eltex_practice# echo -e "# Репозиторий с практическими заданиями по курсу 'системное программирование в Linux'\n\nЛужанский Александр Михайлович\nПодгруппа 2\nВариант 6" >> README.md
+root@eltex-practice2-pg2-v6:~/eltex_practice# cat README.md
+# Репозиторий с практическими заданиями по курсу 'системное программирование в Linux'
+
+Лужанский Александр Михайлович
+Подгруппа 2
+Вариант 6
+root@eltex-practice2-pg2-v6:~/eltex_practice# git init
+Initialized empty Git repository in /root/eltex_practice/.git/
+root@eltex-practice2-pg2-v6:~/eltex_practice# git add README.md 
+root@eltex-practice2-pg2-v6:~/eltex_practice# git commit -m "first commit"
+[main (root-commit) f78fed8] first commit
+ 1 file changed, 5 insertions(+)
+ create mode 100644 README.md
+root@eltex-practice2-pg2-v6:~/eltex_practice# git branch -M main
+root@eltex-practice2-pg2-v6:~/eltex_practice# git remote add origin https://github.com/Moneysib/eltex_practice.git
+root@eltex-practice2-pg2-v6:~/eltex_practice# git status
+On branch main
+nothing to commit, working tree clean
+root@eltex-practice2-pg2-v6:~/eltex_practice# git push -u origin main
+Enumerating objects: 3, done.
+Counting objects:  33% (1/3)Counting objects:  66% (2/3)Counting objects: 100% (3/3)Counting objects: 100% (3/3), done.
+Delta compression using up to 2 threads
+Compressing objects:  50% (1/2)Compressing objects: 100% (2/2)Compressing objects: 100% (2/2), done.
+Writing objects:  33% (1/3)Writing objects:  66% (2/3)Writing objects: 100% (3/3)Writing objects: 100% (3/3), 392 bytes | 392.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Moneysib/eltex_practice.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+root@eltex-practice2-pg2-v6:~/eltex_practice# mkdir -p module1/task1
+root@eltex-practice2-pg2-v6:~/eltex_practice# mkdir module1/task2
+root@eltex-practice2-pg2-v6:~/eltex_practice# mkdir module1/task3
+root@eltex-practice2-pg2-v6:~/eltex_practice# ls module1/task3/
+eltex-pg2-v6_part3.log
+root@eltex-practice2-pg2-v6:~/eltex_practice# git add .
+root@eltex-practice2-pg2-v6:~/eltex_practice# git status
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   module1/task3/eltex-pg2-v6_part3.log
+
+root@eltex-practice2-pg2-v6:~/eltex_practice# commit -m "Add practice 1 reports"
+[main f0d5a20] Add practice 1 reports
+ 1 file changed, 91 insertions(+)
+ create mode 100644 module1/task3/eltex-pg2-v6_part3.log
+root@eltex-practice2-pg2-v6:~/eltex_practice# git push
+Enumerating objects: 6, done.
+Counting objects:  16% (1/6)Counting objects:  33% (2/6)Counting objects:  50% (3/6)Counting objects:  66% (4/6)Counting objects:  83% (5/6)Counting objects: 100% (6/6)Counting objects: 100% (6/6), done.
+Delta compression using up to 2 threads
+Compressing objects:  25% (1/4)Compressing objects:  50% (2/4)Compressing objects:  75% (3/4)Compressing objects: 100% (4/4)Compressing objects: 100% (4/4), done.
+Writing objects:  20% (1/5)Writing objects:  40% (2/5)Writing objects:  60% (3/5)Writing objects:  80% (4/5)Writing objects: 100% (5/5)Writing objects: 100% (5/5), 1.63 KiB | 1.63 MiB/s, done.
+Total 5 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Moneysib/eltex_practice.git
+   f78fed8..f0d5a20  main -> main
+root@eltex-practice2-pg2-v6:~/eltex_practice# git add .
+root@eltex-practice2-pg2-v6:~/eltex_practice# git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   module1/task1/report_part1.txt
+	new file:   module1/task2/eltex-pg2-v6_part.log
+
+root@eltex-practice2-pg2-v6:~/eltex_practice# git commit -m "Add practice 1 reports"
+[main 639b0ef] Add practice 1 reports
+ 2 files changed, 237 insertions(+)
+ create mode 100644 module1/task1/report_part1.txt
+ create mode 100644 module1/task2/eltex-pg2-v6_part.log
+root@eltex-practice2-pg2-v6:~/eltex_practice# git push
+Enumerating objects: 9, done.
+Counting objects:  11% (1/9)Counting objects:  22% (2/9)Counting objects:  33% (3/9)Counting objects:  44% (4/9)Counting objects:  55% (5/9)Counting objects:  66% (6/9)Counting objects:  77% (7/9)Counting objects:  88% (8/9)Counting objects: 100% (9/9)Counting objects: 100% (9/9), done.
+Delta compression using up to 2 threads
+Compressing objects:  20% (1/5)Compressing objects:  40% (2/5)Compressing objects:  60% (3/5)Compressing objects:  80% (4/5)Compressing objects: 100% (5/5)Compressing objects: 100% (5/5), done.
+Writing objects:  14% (1/7)Writing objects:  28% (2/7)Writing objects:  42% (3/7)Writing objects:  57% (4/7)Writing objects:  71% (5/7)Writing objects:  85% (6/7)Writing objects: 100% (7/7)Writing objects: 100% (7/7), 3.10 KiB | 3.10 MiB/s, done.
+Total 7 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Moneysib/eltex_practice.git
+   f0d5a20..639b0ef  main -> main
+root@eltex-practice2-pg2-v6:~/eltex_practice# mkdir ~/eltex_practice_clone && cd  ~/eltex_practice_clone
+root@eltex-practice2-pg2-v6:~/eltex_practice_clone# git clone https://github.com /Moneysib/eltex_pracrice.git .
+Cloning into '.'...
+remote: Enumerating objects: 15, done.
+remote: Counting objects:   6% (1/15)remote: Counting objects:  13% (2/15)remote: Counting objects:  20% (3/15)remote: Counting objects:  26% (4/15)remote: Counting objects:  33% (5/15)remote: Counting objects:  40% (6/15)remote: Counting objects:  46% (7/15)remote: Counting objects:  53% (8/15)remote: Counting objects:  60% (9/15)remote: Counting objects:  66% (10/15)remote: Counting objects:  73% (11/15)remote: Counting objects:  80% (12/15)remote: Counting objects:  86% (13/15)remote: Counting objects:  93% (14/15)remote: Counting objects: 100% (15/15)remote: Counting objects: 100% (15/15), done.
+remote: Compressing objects:   9% (1/11)remote: Compressing objects:  18% (2/11)remote: Compressing objects:  27% (3/11)remote: Compressing objects:  36% (4/11)remote: Compressing objects:  45% (5/11)remote: Compressing objects:  54% (6/11)remote: Compressing objects:  63% (7/11)remote: Compressing objects:  72% (8/11)remote: Compressing objects:  81% (9/11)remote: Compressing objects:  90% (10/11)remote: Compressing objects: 100% (11/11)remote: Compressing objects: 100% (11/11), done.
+remote: Total 15 (delta 0), reused 15 (delta 0), pack-reused 0 (from 0)
+Receiving objects:   6% (1/15)Receiving objects:  13% (2/15)Receiving objects:  20% (3/15)Receiving objects:  26% (4/15)Receiving objects:  33% (5/15)Receiving objects:  40% (6/15)Receiving objects:  46% (7/15)Receiving objects:  53% (8/15)Receiving objects:  60% (9/15)Receiving objects:  66% (10/15)Receiving objects:  73% (11/15)Receiving objects:  80% (12/15)Receiving objects:  86% (13/15)Receiving objects:  93% (14/15)Receiving objects: 100% (15/15)Receiving objects: 100% (15/15), 5.06 KiB | 5.06 MiB/s, done.
+root@eltex-practice2-pg2-v6:~/eltex_practice_clone# ls
+module1  README.md
+root@eltex-practice2-pg2-v6:~/eltex_practice_clone# cd ~/eltex_practice
+root@eltex-practice2-pg2-v6:~/eltex_practice# touch test.txt
+root@eltex-practice2-pg2-v6:~/eltex_practice# git add .
+root@eltex-practice2-pg2-v6:~/eltex_practice# git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   test.txt
+
+root@eltex-practice2-pg2-v6:~/eltex_practice# git commit -m "change" && git push
+[main 851acf3] change
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test.txt
+Enumerating objects: 4, done.
+Counting objects:  25% (1/4)Counting objects:  50% (2/4)Counting objects:  75% (3/4)Counting objects: 100% (4/4)Counting objects: 100% (4/4), done.
+Delta compression using up to 2 threads
+Compressing objects:  50% (1/2)Compressing objects: 100% (2/2)Compressing objects: 100% (2/2), done.
+Writing objects:  33% (1/3)Writing objects:  66% (2/3)Writing objects: 100% (3/3)Writing objects: 100% (3/3), 312 bytes | 312.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Moneysib/eltex_practice.git
+   639b0ef..851acf3  main -> main
+root@eltex-practice2-pg2-v6:~/eltex_practice# cd ~/eltex_practice_clone/
+root@eltex-practice2-pg2-v6:~/eltex_practice_clone# git fetch
+remote: Enumerating objects: 4, done.
+remote: Counting objects:  25% (1/4)remote: Counting objects:  50% (2/4)remote: Counting objects:  75% (3/4)remote: Counting objects: 100% (4/4)remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects:  50% (1/2)remote: Compressing objects: 100% (2/2)remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0 (from 0)
+Unpacking objects:  33% (1/3)Unpacking objects:  66% (2/3)Unpacking objects: 100% (3/3)Unpacking objects: 100% (3/3), 292 bytes | 292.00 KiB/s, done.
+From https://github.com/Moneysib/eltex_practice
+   639b0ef..851acf3  main       -> origin/main
+root@eltex-practice2-pg2-v6:~/eltex_practice_clone# git log origin/main
+commit 851acf37f0b7846466fbcb5564b57a8e347b21b0 (origin/main, origin/HEAD)
+Author: Moneysib <alexluzhanskiy@gmail.com>
+Date:   Mon Nov 2 09:43:43 2026 +0000
+    change
+commit 639b0ef3a9c4483cc3cc85553b82ef7565757bc4 (HEAD -> main)
+Author: Moneysib <alexluzhanskiy@gmail.com>
+Date:   Mon Nov 2 09:37:44 2026 +0000
+    Add practice 1 reports
+commit f0d5a200541fc14b88fef032fa7f9d3b9ad71cb4
+Author: Moneysib <alexluzhanskiy@gmail.com>
+Date:   Mon Nov 2 09:34:47 2026 +0000
+    Add practice 1 reports
+commit f78fed803007ad74ddca40a800a9bba531b6c53a
+Author: Moneysib <alexluzhanskiy@gmail.com>
+Date:   Mon Nov 2 09:15:54 2026 +0000
+    first commit
+root@eltex-practice2-pg2-v6:~/eltex_practice_clone# git diff main otigin/main        
+diff --git a/test.txt b/test.txt
+new file mode 100644
+index 0000000..e69de29
+root@eltex-practice2-pg2-v6:~/eltex_practice_clone# git merge
+Updating 639b0ef..851acf3
+Fast-forward
+ test.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test.txt
+root@eltex-practice2-pg2-v6:~/eltex_practice_clone# git cd ~/el tex_practice
+root@eltex-practice2-pg2-v6:~/eltex_practice# mkdir rm test.txt 
+root@eltex-practice2-pg2-v6:~/eltex_practice# git add .
+root@eltex-practice2-pg2-v6:~/eltex_practice# git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	deleted:    test.txt
+
+root@eltex-practice2-pg2-v6:~/eltex_practice# mkdir -p module2/task1
+root@eltex-practice2-pg2-v6:~/eltex_practice# mkdir -p module2/task2
+root@eltex-practice2-pg2-v6:~/eltex_practice# mkdir module2/task3
+root@eltex-practice2-pg2-v6:~/eltex_practice# touch module2/task1/test.txt
+root@eltex-practice2-pg2-v6:~/eltex_practice# touch module2/task1/test.txt
+root@eltex-practice2-pg2-v6:~/eltex_practice# touch module2/task2/test.txt
+root@eltex-practice2-pg2-v6:~/eltex_practice# git add .
+root@eltex-practice2-pg2-v6:~/eltex_practice# git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	renamed:    test.txt -> module2/task1/test.txt
+	new file:   module2/task2/test.txt
+	new file:   module2/task3/test.txt
+
+root@eltex-practice2-pg2-v6:~/eltex_practice# git commit -m "Add practice 2 reports" && git push
+[main b13cb09] Add practice 2 reports
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ rename test.txt => module2/task1/test.txt (100%)
+ create mode 100644 module2/task2/test.txt
+ create mode 100644 module2/task3/test.txt
+Enumerating objects: 5, done.
+Counting objects:  20% (1/5)Counting objects:  40% (2/5)Counting objects:  60% (3/5)Counting objects:  80% (4/5)Counting objects: 100% (5/5)Counting objects: 100% (5/5), done.
+Delta compression using up to 2 threads
+Compressing objects:  33% (1/3)Compressing objects:  66% (2/3)Compressing objects: 100% (3/3)Compressing objects: 100% (3/3), done.
+Writing objects:  25% (1/4)Writing objects:  50% (2/4)Writing objects:  75% (3/4)Writing objects: 100% (4/4)Writing objects: 100% (4/4), 404 bytes | 404.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Moneysib/eltex_practice.git
+   851acf3..b13cb09  main -> main
+root@eltex-practice2-pg2-v6:~/eltex_practice# exit
+logout
+Connection to 172.16.9.206 closed.
+eltex-pg2-v6@eltex-2026-autumn:~$ exit
+exit
+
+Script done on 2026-11-02 16:55:27+07:00 [COMMAND_EXIT_CODE="0"]

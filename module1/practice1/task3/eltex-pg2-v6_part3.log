@@ -1,0 +1,91 @@
+Script started on 2026-10-23 15:26:43+07:00 [TERM="xterm" TTY="/dev/pts/10" COLUMNS="117" LINES="62"]
+eltex-pg2-v6@eltex-2026-autumn:~$ mkdir -p D1/D2/D3
+
+eltex-pg2-v6@eltex-2026-autumn:~$ ls
+
+2026-01  2026-03  2026-05  2026-07  2026-09  2026-11  D1                      eltex-pg2-v6_part.log
+2026-02  2026-04  2026-06  2026-08  2026-10  2026-12  eltex-pg2-v6_part3.log  report_part1.txt
+eltex-pg2-v6@eltex-2026-autumn:~$ touch D1/D2/file.txt
+
+eltex-pg2-v6@eltex-2026-autumn:~$ echo "Eltex это круто)" > D1/D2/file.txt
+
+eltex-pg2-v6@eltex-2026-autumn:~$ cat D1/D2/file.txt
+
+Eltex это круто)
+eltex-pg2-v6@eltex-2026-autumn:~$ ln D1/D2/file.txt D1/D2/D3/hard_link.txt
+
+eltex-pg2-v6@eltex-2026-autumn:~$ ln -s ../file.txt D1/D2/D3/sym_link.txt
+
+eltex-pg2-v6@eltex-2026-autumn:~$ ls D1/D2/D3
+
+hard_link.txt  sym_link.txt
+eltex-pg2-v6@eltex-2026-autumn:~$ ls -li D1/D2/D3
+
+total 4
+1062448 -rw-r--r-- 2 eltex-pg2-v6 eltex-pg2-v6 25 Oct 23 15:28 hard_link.txt
+1062449 lrwxrwxrwx 1 eltex-pg2-v6 eltex-pg2-v6 11 Oct 23 15:30 sym_link.txt -> ../file.txt
+eltex-pg2-v6@eltex-2026-autumn:~$ ls -li D1/D2
+
+total 8
+1062447 drwxr-xr-x 2 eltex-pg2-v6 eltex-pg2-v6 4096 Oct 23 15:30 D3
+1062448 -rw-r--r-- 2 eltex-pg2-v6 eltex-pg2-v6   25 Oct 23 15:28 file.txt
+eltex-pg2-v6@eltex-2026-autumn:~$ mv D1/D2/file.txt D1/
+
+eltex-pg2-v6@eltex-2026-autumn:~$ ls D1
+
+D2  file.txt
+eltex-pg2-v6@eltex-2026-autumn:~$ cat D1/D2/D3/hard_link.txt
+
+Eltex это круто)
+eltex-pg2-v6@eltex-2026-autumn:~$ cat D1/D2/D3/sym_link.txt
+
+cat: D1/D2/D3/sym_link.txt: No such file or directory
+eltex-pg2-v6@eltex-2026-autumn:~$ rm -r D1/D2
+
+eltex-pg2-v6@eltex-2026-autumn:~$ ls D1
+
+file.txt
+eltex-pg2-v6@eltex-2026-autumn:~$ find / -path /proc -prune -o -path /sys -prune -o -type f -size +20M 2>/dev/null -exec du -sh {} + > "${USER}_part3_gt20M.log"
+
+eltex-pg2-v6@eltex-2026-autumn:~$ cat eltex-pg2-v6_part3_gt20M.log 
+
+31M	/usr/bin/x86_64-linux-gnu-lto-dump-12
+31M	/usr/lib/gcc/x86_64-linux-gnu/12/lto1
+32M	/usr/lib/gcc/x86_64-linux-gnu/12/cc1
+30M	/usr/lib/x86_64-linux-gnu/libicudata.so.72.1
+33M	/boot/initrd.img-6.1.0-44-amd64
+33M	/boot/initrd.img-6.1.0-50-amd64
+33M	/boot/initrd.img-6.1.0-53-amd64
+41M	/var/log/journal/8247b53b6ae84ae0ad9bb1c96113fd29/system@4f44ef78d53d4cd0a5555898b8d0015b-0000000000179b0c-000659e0105337c7.journal
+25M	/var/log/journal/8247b53b6ae84ae0ad9bb1c96113fd29/system@00065be42e22b64e-29e46ef12bfd5644.journal~
+33M	/var/log/journal/8247b53b6ae84ae0ad9bb1c96113fd29/system@00065b6e0461a953-e594878e03ffcfa9.journal~
+25M	/var/log/journal/8247b53b6ae84ae0ad9bb1c96113fd29/system@00065c4bf168df91-94a074e01b8fde49.journal~
+39M	/var/cache/apt/srcpkgcache.bin
+39M	/var/cache/apt/pkgcache.bin
+48M	/var/lib/apt/lists/deb.debian.org_debian_dists_bookworm_main_binary-amd64_Packages
+49M	/var/lib/apt/lists/deb.debian.org_debian_dists_bookworm_main_source_Sources
+32M	/var/lib/apt/lists/deb.debian.org_debian_dists_bookworm_main_i18n_Translation-en
+eltex-pg2-v6@eltex-2026-autumn:~$ find ~ -type f -mmin -1440
+/home/eltex-pg2-v6/.viminfo
+/home/eltex-pg2-v6/eltex-pg2-v6_part3_gt20M.log
+/home/eltex-pg2-v6/eltex-pg2-v6_part3.log
+/home/eltex-pg2-v6/report_part1.txt
+/home/eltex-pg2-v6/eltex-pg2-v6_part.log
+/home/eltex-pg2-v6/D1/file.txt
+/home/eltex-pg2-v6/.bash_history
+eltex-pg2-v6@eltex-2026-autumn:~$ which find
+
+/usr/bin/find
+eltex-pg2-v6@eltex-2026-autumn:~$ file $(which find)
+
+/usr/bin/find: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=5545a6c7162d325fbe5ffabcbfe4e5521b66ce70, for GNU/Linux 3.2.0, stripped
+eltex-pg2-v6@eltex-2026-autumn:~$ file /boot/initrd.img*
+
+/boot/initrd.img-6.1.0-44-amd64: ASCII cpio archive (SVR4 with no CRC)
+/boot/initrd.img-6.1.0-50-amd64: ASCII cpio archive (SVR4 with no CRC)
+/boot/initrd.img-6.1.0-53-amd64: ASCII cpio archive (SVR4 with no CRC)
+eltex-pg2-v6@eltex-2026-autumn:~$ exit
+
+exit
+
+Script done on 2026-10-23 15:40:59+07:00 [COMMAND_EXIT_CODE="0"]
