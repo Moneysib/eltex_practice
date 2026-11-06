@@ -25,3 +25,9 @@ int same_subnet(uint32_t a, uint32_t b, uint32_t mask)
 {
     return ((a & mask) ^ (b & mask)) == 0;
 }
+
+int is_valid_mask(uint32_t mask)
+{
+    uint32_t inv = ~mask;
+    return (inv & (inv + 1)) == 0;
+}

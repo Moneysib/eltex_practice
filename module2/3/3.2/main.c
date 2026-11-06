@@ -15,9 +15,14 @@ int main(int argc, char *argv[])
 {
     uint32_t gateway, mask;
 
-    if (argc != 4 || parse_ip(argv[1], &gateway) != 0 || parse_ip(argv[2], &mask) != 0 || atol(argv[3]) <= 0)
+    if (argc != 4 || parse_ip(argv[1], &gateway) != 0 || atol(argv[3]) <= 0)
     {
         fprintf(stderr, "Использование: %s <IP шлюза> <маска> <число пакетов>\nПример: %s 192.168.1.1 255.255.255.0 1000\n", argv[0], argv[0]);
+        return 1;
+    }
+    if (parse_ip(argv[2], &mask) != 0 || !is_valid_mask(mask))
+    {
+        fprintf(stderr, "Ошибка: неверная маска подсети: %s\n", argv[2]);
         return 1;
     }
     long n = atol(argv[3]);
