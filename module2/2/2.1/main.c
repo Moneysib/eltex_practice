@@ -130,7 +130,10 @@ static void action_edit(void)
         printf("1 - Фамилия\n2 - Имя\n3 - Место работы\n4 - Должность\n"
                "5 - Телефоны\n6 - Email\n7 - Соцсети\n8 - Мессенджеры\n0 - Выход\n");
 
-        switch (input_int("> "))
+        int item = input_int("> ");
+        if (feof(stdin))
+            return;
+        switch (item)
         {
             case 1:
                 edit_field("Фамилия", c->last, 1);
@@ -168,9 +171,8 @@ int main(void)
     while (1) {
         printf("\n1 - добавить\n2 - показать\n3 - изменить\n4 - удалить\n0 - выход\n");
         int choice = input_int("> ");
-        if (choice == 0)
+        if (choice == 0 || feof(stdin))
             break;
-
         if (choice == 1)
         {
             Contact c;
