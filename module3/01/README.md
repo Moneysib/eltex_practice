@@ -57,3 +57,9 @@ make clean
 ```bash
 cmp README.md README.md.copy
 ```
+
+## Запуск тестов
+```bash
+./test.sh
+```
+
