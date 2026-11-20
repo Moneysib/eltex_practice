@@ -17,3 +17,8 @@ make clean
 ```bash
 ./phonebook
 ```
+
+## Запуск тестов
+```bash
+./test.sh
+```
