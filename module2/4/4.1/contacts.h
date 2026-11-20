@@ -16,5 +16,6 @@ Contact *book_get(int index);
 void book_reorder(Contact *c);
 void book_print(void);
 void book_clear(void);
+void book_seed(void);
 
 #endif

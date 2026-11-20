@@ -168,8 +168,16 @@ static void action_edit(void)
     }
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
+    for (int i = 1; i < argc; i++)
+    {
+        if (strcmp(argv[i], "--seed") == 0 || strcmp(argv[i], "-s") == 0)
+        {
+            book_seed();
+            book_print();
+        }
+    }
     while (1) {
         printf("\n1 - добавить\n2 - показать\n3 - изменить\n4 - удалить\n0 - выход\n");
         int choice = input_int("> ");

@@ -22,6 +22,13 @@ make clean
 ./phonebook
 ```
 
+## Запуск с заполнением списка контактов
+```bash
+./phonebook -s
+# или
+./phonebook -seed
+```
+
 ## Запуск тестов
 ```bash
 ./test.sh
