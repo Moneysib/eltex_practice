@@ -17,7 +17,7 @@ make
 make clean
 ```
 
-# Запуск
+## Запуск
 ```bash
 ./phonebook
 ```

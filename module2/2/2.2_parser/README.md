@@ -15,7 +15,7 @@ make
 make clean
 ```
 
-# Запуск
+## Запуск
 ```bash
 ./calc
 ```
