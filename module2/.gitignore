@@ -2,6 +2,7 @@
 *.a
 *.lib
 *.exe
+*.so
 bin/
 calc
 phonebook
